@@ -1,0 +1,27 @@
+{
+  "name": "PlaceholderName-server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.27.1",
+    "connect-mongo": "^4.6.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "mongoose": "^6.0.14",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.3",
+    "multer-storage-cloudinary": "^4.0.0",
+    "stripe": "^8.191.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
