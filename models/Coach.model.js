@@ -2,9 +2,8 @@
 const { Schema, model } = require("mongoose");
 require("./Workout.model")
 
-
 // 1. Define your schema
-let UserSchema = new Schema({
+let CoachSchema = new Schema({
   name: String, 
   email: {
     type: String,
@@ -15,29 +14,22 @@ let UserSchema = new Schema({
     required: true
   },
   image: String,
+  description: String,
   routines:[
-     {
-       type: Schema.Types.ObjectId,
-       ref: "workout"
-     }
-  ],
-  stats: {
-    height: Number,
-    weight: [Number],
-    lifts: {
-      bench: [Number],
-      squat: [Number],
-      deadlift: [Number]
+    {
+      type: Schema.Types.ObjectId,
+      ref: "workout"
     }
-  },
+  ],
+  avgRating: Number,
   isCoach: {
     type: Boolean,
-    default: false
+    default: true
   }
 })
 
 // 2. Define your model
-let UserModel = model('user', UserSchema)
+let CoachModel = model('coach', CoachSchema)
 
 // 3. Export your Model with 'module.exports'
-module.exports = UserModel
+module.exports = CoachModel
