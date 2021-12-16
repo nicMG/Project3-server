@@ -19,7 +19,7 @@ let UserSchema = new Schema({
      {
        type: Schema.Types.ObjectId,
        ref: "workout",
-       unique: true
+   
      }
   ],
   stats: {

@@ -19,13 +19,20 @@ let CoachSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: "workout",
-      unique: true
+    
     }
   ],
   avgRating: Number,
   isCoach: {
     type: Boolean,
     default: true
+  },
+  stats: {
+    height: Number,
+    weight: Number,
+    bench: Number,
+    squat: Number,
+    deadlift: Number
   }
 })
 

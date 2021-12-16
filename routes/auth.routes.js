@@ -40,6 +40,7 @@ router.post('/signup', (req, res) => {
     // creating a salt 
     let salt = bcrypt.genSaltSync(10);
     let hash = bcrypt.hashSync(password, salt);
+  
     UserModel.create({name: username, email, passwordHash: hash})
       .then((user) => {
         // ensuring that we don't share the hash as well with the user
@@ -47,7 +48,8 @@ router.post('/signup', (req, res) => {
         res.status(200).json(user);
       })
       .catch((err) => {
-        if (err.code === 11000) {
+        if (err.code == 11000) {
+          console.log("does it go in it ?")
           res.status(500).json({
             errorMessage: 'username or email entered already exists!',
             message: err,
@@ -171,6 +173,7 @@ router.post('/signup/coach', (req, res) => {
         res.status(200).json(user);
       })
       .catch((err) => {
+        console.log(err)
         if (err.code === 11000) {
           res.status(500).json({
             errorMessage: 'username or email entered already exists!',
