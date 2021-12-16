@@ -21,9 +21,9 @@ router.get('/workouts', (req, res) => {
 
 // will handle all POST requests to http:localhost:5005/api/create
 router.post('/workouts/create', (req, res) => {  
-    const {name, description, image} = req.body;
+    const {name, shortDescription ,description,image} = req.body;
     console.log(req.body)
-    WorkoutModel.create({name: name, description: description, image})
+    WorkoutModel.create({name: name, shortDescription, description: description, image})
           .then((response) => {
                res.status(200).json(response)
           })

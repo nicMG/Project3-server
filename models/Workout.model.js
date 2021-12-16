@@ -6,10 +6,13 @@ let WorkoutSchema = new Schema({
         type: String,
         required: true
     },
+    comments: [String],
+    shortDescription: String,
     description: String,
     duration: Number,
     rating: Number,
     image: String,
+    createdBy: String
     // routine: {
     //     week1:{
     //         day1:{

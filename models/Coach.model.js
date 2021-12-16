@@ -18,7 +18,8 @@ let CoachSchema = new Schema({
   routines:[
     {
       type: Schema.Types.ObjectId,
-      ref: "workout"
+      ref: "workout",
+      unique: true
     }
   ],
   avgRating: Number,

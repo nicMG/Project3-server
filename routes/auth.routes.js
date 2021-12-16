@@ -116,8 +116,10 @@ router.post('/signin', (req, res) => {
 
 router.patch("/profile/:id", (req, res) => {
   let id = req.params.id
-  const {name, description} = req.body
-  UserModel.findByIdAndUpdate(id, {$set: {name: name, description:description}}, {new: true})
+  const {name, description, workoutId, image, height, weight, bench, squat, deadlift} = req.body
+  // console.log(name, description, workoutId, image, height, weight, bench, squat, deadlift)
+  UserModel.findByIdAndUpdate(id, {$set: {name: name, image:image, "stats.height": height, "stats.weight": weight, "stats.bench": bench, "stats.squat": squat, "stats.deadlift": deadlift},$push: {routines: workoutId}}, {new: true})
+    .populate("routines")
     .then((response) => {
         res.status(200).json(response)
     }).catch((err) => {
@@ -278,7 +280,18 @@ const isLoggedIn = (req, res, next) => {
 // THIS IS A PROTECTED ROUTE
 // will handle all get requests to http:localhost:5005/api/user
 router.get("/user", isLoggedIn, (req, res, next) => {
-  res.status(200).json(req.session.loggedInUser);
+  
+  
+  UserModel.findById(req.session.loggedInUser._id)
+    .populate("routines")
+    .then((result) => {
+      res.status(200).json(result);
+    }).catch((err) => {
+      res.status(500).json({
+          message: 'user not found',
+          code: 500,
+      })
+    });
 });
 
 module.exports = router;

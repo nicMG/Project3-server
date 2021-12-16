@@ -18,17 +18,16 @@ let UserSchema = new Schema({
   routines:[
      {
        type: Schema.Types.ObjectId,
-       ref: "workout"
+       ref: "workout",
+       unique: true
      }
   ],
   stats: {
     height: Number,
-    weight: [Number],
-    lifts: {
-      bench: [Number],
-      squat: [Number],
-      deadlift: [Number]
-    }
+    weight: Number,
+    bench: Number,
+    squat: Number,
+    deadlift: Number
   },
   isCoach: {
     type: Boolean,
