@@ -1,42 +1,39 @@
-
-const { Schema, model } = require("mongoose");
-require("./Workout.model")
-
+const { Schema, model } = require('mongoose');
+require('./Workout.model');
 
 // 1. Define your schema
 let UserSchema = new Schema({
-  name: String, 
+  name: String,
   email: {
     type: String,
-    required: true
+    required: true,
   },
   passwordHash: {
     type: String,
-    required: true
+    required: true,
   },
   image: String,
-  routines:[
-     {
-       type: Schema.Types.ObjectId,
-       ref: "workout",
-   
-     }
+  routines: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'workout',
+    },
   ],
   stats: {
     height: Number,
     weight: Number,
     bench: Number,
     squat: Number,
-    deadlift: Number
+    deadlift: Number,
   },
   isCoach: {
     type: Boolean,
-    default: false
-  }
-})
+    default: false,
+  },
+});
 
 // 2. Define your model
-let UserModel = model('user', UserSchema)
+let UserModel = model('user', UserSchema);
 
 // 3. Export your Model with 'module.exports'
-module.exports = UserModel
+module.exports = UserModel;
